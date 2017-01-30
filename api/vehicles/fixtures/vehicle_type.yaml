@@ -1,0 +1,46 @@
+- model: vehicles.VehicleType
+  pk: 1
+  fields: 
+    name: motos
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 2
+  fields: 
+    name: camperos y camionetas
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 3
+  fields: 
+    name: carga o mixto
+    measurement: T
+- model: vehicles.VehicleType
+  pk: 4
+  fields: 
+    name: oficiales especiales
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 5
+  fields: 
+    name: autos familiares
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 6
+  fields: 
+    name: vehícuolos para seis o mas pasajeros
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 7
+  fields: 
+    name: autos de negocios y taxis
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 8
+  fields: 
+    name: buses y busetas de servicio publico
+    measurement: CC
+- model: vehicles.VehicleType
+  pk: 9
+  fields: 
+    name: motos
+    measurement: P
+

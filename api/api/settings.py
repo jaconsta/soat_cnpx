@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'rest_framework_swagger',
     # API
     'citizens',
+    'vehicles',
 
 ]
 
@@ -160,3 +161,9 @@ SWAGGER_SETTINGS = {
         'title': 'SOAT application API',
     },
 }
+
+# Project settings.
+# Commercial fees
+liquidation_base = 2459000
+fosyga_contribution = 0.5    # Percentage 0-1
+RUNT_fee = 1610

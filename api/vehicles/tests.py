@@ -1,4 +1,3 @@
 from django.test import TestCase
 
-from .tests_cases import *
-
+from .test_cases import *

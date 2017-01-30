@@ -1,0 +1,108 @@
+- model: vehicles.VehicleClassifications
+  pk: 1
+  fields: 
+    code: 110
+    vehicle_class: 1
+    th_meas_max: 100
+    commercial_fee: 8.26
+    base_value: 203100
+- model: vehicles.VehicleClassifications
+  pk: 2
+  fields: 
+    code: 120
+    vehicle_class: 1
+    th_meas_min: 100
+    th_meas_max: 200
+    meas_spec_name: null
+    commercial_fee: 11.09
+    base_value: 272700
+- model: vehicles.VehicleClassifications
+  pk: 3
+  fields: 
+    code: 130
+    vehicle_class: 1
+    th_meas_min: 200
+    commercial_fee: 12.51
+    base_value: 307600
+- model: vehicles.VehicleClassifications
+  pk: 4
+  fields: 
+    code: 140
+    vehicle_class: 1
+    meas_spec_name: MOTOCARROS
+    commercial_fee: 12.52
+    base_value: 307600
+
+- model: vehicles.VehicleClassifications
+  pk: 5
+  fields: 
+    code: 211
+    vehicle_class: 2
+    th_meas_max: 1500
+    year_min: 0
+    year_max: 9
+    commercial_fee: 13.29
+    base_value: 326800
+- model: vehicles.VehicleClassifications
+  pk: 6
+  fields: 
+    code: 212
+    vehicle_class: 2
+    th_meas_min: null
+    th_meas_max: 1500
+    year_min: 10
+    commercial_fee: 15.99
+    base_value: 393200
+- model: vehicles.VehicleClassifications
+  pk: 7
+  fields: 
+    code: 221
+    vehicle_class: 2
+    th_meas_min: 1500
+    th_meas_max: 2500
+    year_min: 0
+    year_max: 9
+    commercial_fee: 15.88
+    base_value: 390400
+- model: vehicles.VehicleClassifications
+  pk: 8
+  fields: 
+    code: 222
+    vehicle_class: 2
+    th_meas_min: 1500
+    th_meas_max: 2500
+    year_min: 10
+    commercial_fee: 18.82
+    base_value: 462700
+- model: vehicles.VehicleClassifications
+  pk: 9
+  fields: 
+    code: 231
+    vehicle_class: 2
+    th_meas_min: 2500
+    year_min: 0
+    year_max: 9
+    commercial_fee: 18.63
+    base_value: 458100
+- model: vehicles.VehicleClassifications
+  pk: 10
+  fields: 
+    code: 232
+    vehicle_class: 2
+    th_meas_min: 2500
+    year_min: 10
+    commercial_fee: 21.39
+    base_value: 525900
+
+# - model: vehicles.VehicleClassifications
+#   pk: 11
+#   fields: 
+#     code: 310
+#     vehicle_class: 3
+#     th_meas_min: null
+#     th_meas_max: 100
+#     meas_spec_name: null
+#     year_min:
+#     year_max:
+#     commercial_fee:
+#     base_value:

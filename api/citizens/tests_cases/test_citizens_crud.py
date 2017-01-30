@@ -5,6 +5,7 @@ from django.test import (Client, TestCase)
 
 from citizens.models import Citizen
 
+
 class CitizensTestCase(TestCase):
     def setUp(self):
         self.client = Client()
