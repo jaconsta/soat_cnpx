@@ -1,7 +1,13 @@
+import datetime
+
 from django.db import models
+from django.utils import timezone
+
+from .services import daysago
 
 
 class VehicleType(models.Model):
+    """Main vehicle classes available"""
     # Main vehicle category
     name = models.CharField(max_length= 150)
     # Measurement units to calculate limits
@@ -17,11 +23,15 @@ class VehicleType(models.Model):
     )
     measurement = models.CharField(max_length=10, choices=measurement_choices)
 
+    # For monitoring purpose.
+    updated_at = models.DateTimeField(auto_now=True)
+
     def str(self):
         return self.name
 
 
 class VehicleClassifications(models.Model):
+    """Parametrization of the vehicle classifications."""
     # Unique code assignment .
     code = models.IntegerField()
     # Main category.
@@ -47,3 +57,56 @@ class VehicleClassifications(models.Model):
     commercial_fee = models.FloatField()
     # Valor prima
     base_value = models.IntegerField()
+
+    # For monitoring purpose.
+    updated_at = models.DateTimeField(auto_now=True)
+
+    def str(self):
+        return '{code}, Class. {vehicle_class}'.format(code=self.code, vehicle_class=self.vehicle_class.name)
+
+
+class Vehicle(models.Model):
+    """Vehicle registered in the system."""
+    license_plate = models.CharField(max_length=10, unique=True)
+
+    # Classification based on the parametrization tables.
+    vehicle_class = models.ForeignKey('VehicleClassifications') # This field might be redundant.
+    vehicle_sub_type = models.ForeignKey('VehicleClassifications')
+
+    # Details of the vehicle, based on the VehicleClassifications parameters.
+    # Year the vehicle was bought.
+    model = models.IntegerField()
+    # Passengers capacity.
+    passsenger_capacity = models.IntegerField()
+    # Total CC of the vehicle.
+    cilinders = models.IntegerField()
+    # Load capacity in tons.
+    tons = models.IntegerField()
+    
+    # For monitoring purpose.
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
+
+    def years_old(self):
+        return daysago(self.model)
+
+    
+
+class Insurance(models.Model):
+    """
+    The insurance taken by the vehicle.
+    Should have it's own APP.
+    """
+    vehicle = models.ForeignKey('Vehicle')
+
+    # Insurance details.
+    insurance_type = models.CharField(max_length=50, default='soat')
+    purchase_date = models.DateTimeField(default=timezone.now())
+
+    # Date it starts to be valid.
+    valid_from = models.DateField(default=datetime.datetime.today())
+
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)
+
