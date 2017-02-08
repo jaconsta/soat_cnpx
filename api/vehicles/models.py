@@ -3,7 +3,7 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
-from .services import daysago
+from .services import years_ago
 
 
 class VehicleType(models.Model):
@@ -89,7 +89,7 @@ class Vehicle(models.Model):
 
 
     def years_old(self):
-        return daysago(self.model)
+        return years_ago(self.model)
 
     
 
