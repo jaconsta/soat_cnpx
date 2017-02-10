@@ -3,19 +3,19 @@ import datetime
 from django.db import models
 from django.utils import timezone
 
-from .services import daysago
+from .services import years_ago
 
 
 class VehicleType(models.Model):
     """Main vehicle classes available"""
     # Main vehicle category
-    name = models.CharField(max_length= 150)
+    name = models.CharField(max_length=150)
     # Measurement units to calculate limits
     CUBIC_CENTIMETERS = "cc"
     TONS = 'T'
     PASSENGERS = 'P'
     NONE = 'N'
-    measurement_choices= (
+    measurement_choices = (
         (CUBIC_CENTIMETERS, 'c.c.'),
         (TONS, 'Toneladas'),
         (PASSENGERS, 'Pasajeros'),
@@ -50,7 +50,7 @@ class VehicleClassifications(models.Model):
     year_min = models.IntegerField(null=True, blank=True)
     year_max = models.IntegerField(null=True, blank=True)
 
-    # Base for commerzial charges.
+    # Base of commercial fees.
     # According to fasecolda
     # http://www.fasecolda.com/files/1114/8406/4009/Tarifas_soat_2016C004-09.pdf
     # Tasa comercial (CE04-09 SFC
@@ -70,16 +70,16 @@ class Vehicle(models.Model):
     license_plate = models.CharField(max_length=10, unique=True)
 
     # Classification based on the parametrization tables.
-    vehicle_class = models.ForeignKey('VehicleClassifications') # This field might be redundant.
+    vehicle_class = models.ForeignKey('VehicleClassifications')  # This field might be redundant.
     vehicle_sub_type = models.ForeignKey('VehicleClassifications')
 
     # Details of the vehicle, based on the VehicleClassifications parameters.
     # Year the vehicle was bought.
     model = models.IntegerField()
     # Passengers capacity.
-    passsenger_capacity = models.IntegerField()
+    passenger_capacity = models.IntegerField()
     # Total CC of the vehicle.
-    cilinders = models.IntegerField()
+    cylinders = models.IntegerField()
     # Load capacity in tons.
     tons = models.IntegerField()
     
@@ -87,11 +87,9 @@ class Vehicle(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
-
     def years_old(self):
-        return daysago(self.model)
+        return years_ago(self.model)
 
-    
 
 class Insurance(models.Model):
     """

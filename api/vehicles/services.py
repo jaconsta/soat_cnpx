@@ -1,7 +1,7 @@
 from datetime import datetime
 
 
-def yearsago(years, from_date=None):
+def years_ago(years, from_date=None):
     if from_date is None:
         from_date = datetime.now()
     try:
